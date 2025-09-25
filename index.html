@@ -3,369 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberfort - Securing the Decentralized World</title>
+    <title>CyberFort | Enterprise Blockchain Security</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide-react@0.301.0/dist/lucide-react.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0a0a0a',
+                        'brand-gray': '#1a1a1a',
+                        'brand-blue': '#007cf0',
+                        'brand-green': '#00ff9c',
+                        'brand-light': '#f0f0f0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <style>
         body {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
             font-family: 'Inter', sans-serif;
-            background-color: #0A0F1E; /* Deep dark blue */
-            color: #E0E0E0; /* Light gray for text */
         }
-        .hero-gradient {
-            background: radial-gradient(ellipse at center, rgba(13, 110, 253, 0.1), transparent 70%);
+        .hero-bg {
+            background-color: #0a0a0a;
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(0, 124, 240, 0.2) 1px, transparent 0),
+                radial-gradient(circle at 25px 25px, rgba(0, 124, 240, 0.1) 1px, transparent 0);
+            background-size: 50px 50px;
         }
-        .section-gradient {
-            background: linear-gradient(180deg, #0A0F1E 0%, #0D152A 100%);
+        .glow-text {
+            text-shadow: 0 0 8px var(--tw-shadow-color);
         }
-        .card-bg {
-            background-color: rgba(20, 28, 51, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(56, 189, 248, 0.1);
+        .card-border-glow {
+             border: 1px solid transparent;
+             background: linear-gradient(to right, var(--tw-gradient-stops)) padding-box, linear-gradient(145deg, #007cf0, #00ff9c) border-box;
         }
-        .cta-button {
-            background: linear-gradient(90deg, #0ea5e9, #2563eb);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
-        }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(14, 165, 233, 0.6);
-        }
-        .secondary-button {
-            background-color: transparent;
-            border: 1px solid #38bdf8;
-            color: #38bdf8;
-            transition: all 0.3s ease;
-        }
-        .secondary-button:hover {
-            background-color: rgba(56, 189, 248, 0.1);
-        }
-        .glow-effect::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(29, 78, 216, 0.3) 0%, transparent 40%);
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .group:hover .glow-effect::before {
-            opacity: 1;
+        .btn-glow:hover {
+            box-shadow: 0 0 15px 0px var(--tw-shadow-color);
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="fixed w-full top-0 left-0 z-50 bg-opacity-80 backdrop-blur-md border-b border-gray-800/50">
+    <header id="header" class="bg-brand-dark/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-brand-gray/50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
-                <a href="#" class="flex items-center space-x-2 text-2xl font-bold text-white">
-                    <svg class="w-8 h-8 text-sky-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" />
-                    </svg>
-                    <span>Cyberfort</span>
-                </a>
-
+                <div class="flex-shrink-0">
+                     <a href="#" class="flex items-center space-x-2">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-brand-green"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="text-2xl font-bold text-white">CyberFort</span>
+                    </a>
+                </div>
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#services" class="text-gray-300 hover:text-sky-400 transition">Services</a>
-                    <a href="#products" class="text-gray-300 hover:text-sky-400 transition">Products</a>
-                    <a href="#about" class="text-gray-300 hover:text-sky-400 transition">Why Us</a>
-                    <a href="#knowledge" class="text-gray-300 hover:text-sky-400 transition">Knowledge Hub</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-brand-green transition-colors duration-300">About</a>
+                    <a href="#services" class="text-gray-300 hover:text-brand-green transition-colors duration-300">Services</a>
+                    <a href="#why-us" class="text-gray-300 hover:text-brand-green transition-colors duration-300">Why Us</a>
+                    <a href="#contact" class="text-gray-300 hover:text-brand-green transition-colors duration-300">Contact</a>
                 </nav>
-
-                <!-- CTA Button -->
-                <a href="#contact" class="hidden md:inline-block px-6 py-3 rounded-lg font-semibold text-white cta-button">
-                    Get a Quote
-                </a>
-                
+                <!-- CTA -->
+                <div class="hidden md:block">
+                     <a href="#contact" class="px-5 py-2.5 bg-brand-blue text-white font-semibold rounded-lg shadow-lg shadow-brand-blue/30 hover:bg-brand-blue/90 btn-glow transition-all duration-300">Contact Us</a>
+                </div>
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2">
-             <a href="#services" class="block text-gray-300 hover:text-sky-400 transition py-2">Services</a>
-             <a href="#products" class="block text-gray-300 hover:text-sky-400 transition py-2">Products</a>
-             <a href="#about" class="block text-gray-300 hover:text-sky-400 transition py-2">Why Us</a>
-             <a href="#knowledge" class="block text-gray-300 hover:text-sky-400 transition py-2">Knowledge Hub</a>
-             <a href="#contact" class="block mt-4 w-full text-center px-6 py-3 rounded-lg font-semibold text-white cta-button">Get a Quote</a>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <nav class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-brand-gray">About</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-brand-gray">Services</a>
+                <a href="#why-us" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-brand-gray">Why Us</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-brand-gray">Contact</a>
+                 <a href="#contact" class="block w-full text-left px-3 py-3 mt-2 bg-brand-blue text-white font-semibold rounded-lg shadow-lg shadow-brand-blue/30">Contact Us</a>
+            </nav>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-gradient overflow-hidden">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tighter leading-tight">
-                    Unbreachable Security for the <br class="hidden md:block" /> <span class="text-sky-400">Decentralized Frontier</span>
+        <section class="relative hero-bg pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center text-center overflow-hidden">
+             <div class="absolute inset-0 bg-gradient-to-b from-brand-dark via-brand-dark/80 to-brand-dark"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight max-w-4xl mx-auto">
+                    Where blockchain integrity meets enterprise security — <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-green">because if it’s not total, it is zero.</span>
                 </h1>
-                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400">
-                    Cyberfort provides elite, end-to-end security solutions for the Web3 ecosystem. From smart contracts to exchanges, we are your trusted partner in navigating the complexities of blockchain security.
+                <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                    CyberFort is a cybersecurity firm specializing in advanced security testing services, with a strong focus on penetration testing.
                 </p>
                 <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-lg font-semibold text-white cta-button text-lg">
-                        Secure Your Project
-                    </a>
-                    <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-lg font-semibold secondary-button text-lg">
-                        Explore Services
-                    </a>
-                </div>
-            </div>
-            <div class="absolute -bottom-1/2 -left-1/4 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(29,78,216,0.15)_0%,_transparent_50%)] -z-10"></div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="py-20 lg:py-28 section-gradient">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">A Comprehensive Security Suite</h2>
-                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Fortifying every layer of your Web3 project with specialized expertise.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Service Card 1 -->
-                    <div class="card-bg p-8 rounded-2xl group relative overflow-hidden">
-                        <div class="glow-effect"></div>
-                        <div class="relative z-10">
-                            <div class="mb-4 inline-block p-4 rounded-xl bg-sky-900/50 border border-sky-400/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-3">Smart Contract Audits</h3>
-                            <p class="text-gray-400">Meticulous manual and automated analysis to identify vulnerabilities, logic flaws, and gas optimization issues before deployment.</p>
-                        </div>
-                    </div>
-                    <!-- Service Card 2 -->
-                    <div class="card-bg p-8 rounded-2xl group relative overflow-hidden">
-                        <div class="glow-effect"></div>
-                        <div class="relative z-10">
-                            <div class="mb-4 inline-block p-4 rounded-xl bg-sky-900/50 border border-sky-400/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-3">Threat Intelligence</h3>
-                            <p class="text-gray-400">Proactive monitoring and analysis of emerging threats, attack vectors, and malicious actors to keep you one step ahead.</p>
-                        </div>
-                    </div>
-                    <!-- Service Card 3 -->
-                    <div class="card-bg p-8 rounded-2xl group relative overflow-hidden">
-                        <div class="glow-effect"></div>
-                        <div class="relative z-10">
-                            <div class="mb-4 inline-block p-4 rounded-xl bg-sky-900/50 border border-sky-400/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-3">AML & Compliance</h3>
-                            <p class="text-gray-400">Robust Anti-Money Laundering and compliance solutions, including transaction monitoring and risk scoring to meet regulatory standards.</p>
-                        </div>
-                    </div>
+                    <a href="#services" class="w-full sm:w-auto px-8 py-4 bg-brand-green text-brand-dark font-bold rounded-lg shadow-lg shadow-brand-green/30 hover:bg-brand-green/90 btn-glow transition-all duration-300">Get Started</a>
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-brand-blue text-white font-semibold rounded-lg hover:bg-brand-blue hover:text-white transition-all duration-300">Contact Us</a>
                 </div>
             </div>
         </section>
 
-        <!-- Products Section -->
-        <section id="products" class="py-20 lg:py-28">
+        <!-- About Us Section -->
+        <section id="about" class="py-20 md:py-32 bg-brand-dark">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Our Innovative Security Products</h2>
-                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Empowering developers and users with cutting-edge security tools.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Product Card 1 -->
-                    <div class="card-bg p-8 rounded-2xl flex flex-col sm:flex-row items-start gap-6">
-                        <div class="p-3 rounded-lg bg-blue-900/50 flex-shrink-0">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z" /><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.022 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" /></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">MistTrack</h3>
-                            <p class="text-gray-400 mt-2">A powerful crypto tracking and compliance platform to visualize transactions, assess risk, and aid in asset recovery.</p>
-                        </div>
-                    </div>
-                     <!-- Product Card 2 -->
-                    <div class="card-bg p-8 rounded-2xl flex flex-col sm:flex-row items-start gap-6">
-                        <div class="p-3 rounded-lg bg-blue-900/50 flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd" /></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Vulpush</h3>
-                            <p class="text-gray-400 mt-2">Proactive vulnerability monitoring that keeps your project secure by identifying risks in dependencies and infrastructure.</p>
-                        </div>
-                    </div>
-                     <!-- Product Card 3 -->
-                    <div class="card-bg p-8 rounded-2xl flex flex-col sm:flex-row items-start gap-6">
-                        <div class="p-3 rounded-lg bg-blue-900/50 flex-shrink-0">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" /><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" /></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Cyberfort Hacked</h3>
-                            <p class="text-gray-400 mt-2">A comprehensive public archive of major crypto security incidents, serving as a vital educational resource for the community.</p>
-                        </div>
-                    </div>
-                     <!-- Product Card 4 -->
-                    <div class="card-bg p-8 rounded-2xl flex flex-col sm:flex-row items-start gap-6">
-                        <div class="p-3 rounded-lg bg-blue-900/50 flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" /></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">FireWall.X</h3>
-                            <p class="text-gray-400 mt-2">A specialized, intelligent firewall designed to shield smart contracts from malicious transactions and exploits in real-time.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Us / About Section -->
-        <section id="about" class="py-20 lg:py-28 section-gradient">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                 <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl md:text-4xl font-bold text-white">Your Trusted Partner in the Digital Age</h2>
-                        <p class="mt-6 text-lg text-gray-400">
-                            Founded in 2018, Cyberfort was born from a team with over a decade of collective experience in elite network security. Our mission is to bring a sense of security to the entire blockchain ecosystem, protecting innovation and fostering trust. We've secured some of the biggest names in the industry, and our research continuously pushes the boundaries of Web3 security.
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">About Us</h2>
+                        <p class="mt-4 text-brand-green font-semibold">Elevating Enterprise Security with Precision.</p>
+                        <p class="mt-4 text-gray-300">
+                           Our mission is to simplify security while delivering world-class protection. Our core team holds certifications such as OSCP, CEH, and has served Fortune 500 companies and government agencies. We thrive at the intersection of government-enterprise collaboration, building resilient digital fortresses against evolving threats.
                         </p>
-                        <div class="mt-8 grid grid-cols-2 gap-6 text-center">
-                            <div>
-                                <span class="text-4xl font-bold text-sky-400">500+</span>
-                                <p class="text-gray-400 mt-1">Projects Secured</p>
-                            </div>
-                            <div>
-                                <span class="text-4xl font-bold text-sky-400">$10B+</span>
-                                <p class="text-gray-400 mt-1">In Assets Protected</p>
-                            </div>
-                        </div>
                     </div>
-                    <div class="p-8 card-bg rounded-2xl">
-                        <h3 class="text-xl font-bold text-white mb-6 text-center">Trusted by Industry Leaders</h3>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 items-center">
-                            <!-- Placeholder Logos -->
-                            <div class="flex justify-center"><span class="text-gray-500 font-semibold text-xl">Project A</span></div>
-                            <div class="flex justify-center"><span class="text-gray-500 font-semibold text-xl">Web3 Corp</span></div>
-                            <div class="flex justify-center"><span class="text-gray-500 font-semibold text-xl">ChainSecure</span></div>
-                            <div class="flex justify-center"><span class="text-gray-500 font-semibold text-xl">Defi Labs</span></div>
-                            <div class="flex justify-center"><span class="text-gray-500 font-semibold text-xl">Crypto Fund</span></div>
-                            <div class="flex justify-center"><span class="text-gray-500 font-semibold text-xl">Innovate DAO</span></div>
+                    <div class="bg-brand-gray p-8 rounded-lg border border-gray-800">
+                        <div class="flex items-center">
+                            <svg class="w-10 h-10 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            <h3 class="ml-4 text-xl font-semibold text-white">Government & Enterprise Collaboration</h3>
                         </div>
+                        <p class="mt-3 text-gray-400">Our expertise is uniquely positioned to bridge the gap between public sector mandates and private sector innovation, ensuring robust security frameworks that meet the highest standards of compliance and resilience.</p>
                     </div>
-                 </div>
-            </div>
-        </section>
-
-        <!-- Knowledge Hub Section -->
-        <section id="knowledge" class="py-20 lg:py-28">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">From Our Knowledge Hub</h2>
-                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Insights and research from the frontlines of blockchain security.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                     <!-- Blog Post 1 -->
-                    <div class="card-bg rounded-2xl overflow-hidden group">
-                        <div class="p-8">
-                            <p class="text-sky-400 text-sm font-semibold mb-2">Threat Analysis</p>
-                            <h3 class="text-xl font-bold text-white group-hover:text-sky-300 transition">Anatomy of a Flash Loan Attack: 2025 Mid-Year Report</h3>
-                            <p class="text-gray-400 mt-3">A deep dive into the most prevalent DeFi exploit of the year and how to mitigate it.</p>
-                        </div>
-                    </div>
-                    <!-- Blog Post 2 -->
-                    <div class="card-bg rounded-2xl overflow-hidden group">
-                         <div class="p-8">
-                            <p class="text-sky-400 text-sm font-semibold mb-2">Best Practices</p>
-                            <h3 class="text-xl font-bold text-white group-hover:text-sky-300 transition">The Secure Smart Contract Development Checklist</h3>
-                            <p class="text-gray-400 mt-3">Essential security considerations for every Solidity developer, from start to finish.</p>
-                        </div>
-                    </div>
-                    <!-- Blog Post 3 -->
-                    <div class="card-bg rounded-2xl overflow-hidden group">
-                         <div class="p-8">
-                            <p class="text-sky-400 text-sm font-semibold mb-2">Community Alert</p>
-                            <h3 class="text-xl font-bold text-white group-hover:text-sky-300 transition">New Phishing Scam Targeting Wallet Users</h3>
-                            <p class="text-gray-400 mt-3">Identifying and avoiding the latest social engineering tactics plaguing the ecosystem.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contact / CTA Section -->
-        <section id="contact" class="py-20 lg:py-28 section-gradient">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto text-center">
-                    <h2 class="text-4xl md:text-5xl font-bold text-white">Ready to Secure Your Place in Web3?</h2>
-                    <p class="mt-6 text-lg text-gray-400">
-                        Don't wait for a vulnerability to become a crisis. Talk to our security experts today for a free, no-obligation consultation and find out how Cyberfort can protect your project.
-                    </p>
-                    <a href="mailto:contact@cyberfort.example.com" class="mt-10 inline-block px-10 py-5 rounded-lg font-semibold text-white cta-button text-xl">
-                        Get Your Free Consultation
-                    </a>
                 </div>
             </div>
         </section>
 
+        <!-- Our Services Section -->
+        <section id="services" class="py-20 md:py-32 bg-brand-gray">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Our Services</h2>
+                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Comprehensive security solutions tailored for the digital frontier.</p>
+
+                <!-- Core Services -->
+                <h3 class="mt-16 text-2xl font-semibold text-white tracking-wide">Core Security Services</h3>
+                <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card -->
+                    <div class="bg-brand-dark p-6 rounded-xl border border-gray-800 hover:border-brand-blue transition-all duration-300 transform hover:-translate-y-1">
+                        <svg class="w-10 h-10 mx-auto text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H5v-2H3v-2H1v-4a6 6 0 017.743-5.743z"></path></svg>
+                        <h4 class="mt-4 font-bold text-lg text-white">Penetration Testing</h4>
+                    </div>
+                    <div class="bg-brand-dark p-6 rounded-xl border border-gray-800 hover:border-brand-blue transition-all duration-300 transform hover:-translate-y-1">
+                         <svg class="w-10 h-10 mx-auto text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h4 class="mt-4 font-bold text-lg text-white">Incident Response</h4>
+                    </div>
+                    <div class="bg-brand-dark p-6 rounded-xl border border-gray-800 hover:border-brand-blue transition-all duration-300 transform hover:-translate-y-1">
+                        <svg class="w-10 h-10 mx-auto text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                        <h4 class="mt-4 font-bold text-lg text-white">Security Consulting</h4>
+                    </div>
+                    <div class="bg-brand-dark p-6 rounded-xl border border-gray-800 hover:border-brand-blue transition-all duration-300 transform hover:-translate-y-1">
+                        <svg class="w-10 h-10 mx-auto text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <h4 class="mt-4 font-bold text-lg text-white">Defense Deployment</h4>
+                    </div>
+                </div>
+
+                 <!-- Blockchain Services -->
+                <h3 class="mt-16 text-2xl font-semibold text-white tracking-wide">Specialized Blockchain Security</h3>
+                 <div class="mt-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    <div class="bg-brand-dark py-5 px-3 rounded-xl border border-gray-800 hover:border-brand-green transition-all duration-300"><h4 class="font-semibold text-sm text-white">Exchange Security Audit</h4></div>
+                    <div class="bg-brand-dark py-5 px-3 rounded-xl border border-gray-800 hover:border-brand-green transition-all duration-300"><h4 class="font-semibold text-sm text-white">Wallet Security Audit</h4></div>
+                    <div class="bg-brand-dark py-5 px-3 rounded-xl border border-gray-800 hover:border-brand-green transition-all duration-300"><h4 class="font-semibold text-sm text-white">Smart Contract Audit</h4></div>
+                    <div class="bg-brand-dark py-5 px-3 rounded-xl border border-gray-800 hover:border-brand-green transition-all duration-300"><h4 class="font-semibold text-sm text-white">Blockchain Security Audit</h4></div>
+                    <div class="bg-brand-dark py-5 px-3 rounded-xl border border-gray-800 hover:border-brand-green transition-all duration-300"><h4 class="font-semibold text-sm text-white">Consortium Blockchain Solutions</h4></div>
+                    <div class="bg-brand-dark py-5 px-3 rounded-xl border border-gray-800 hover:border-brand-green transition-all duration-300"><h4 class="font-semibold text-sm text-white">Security Monitoring</h4></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Why Us Section -->
+        <section id="why-us" class="py-20 md:py-32 bg-brand-dark">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Your Trusted Partner in the Digital Age</h2>
+                </div>
+                <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+                    <!-- Feature Card -->
+                     <div class="bg-brand-gray p-8 rounded-lg border border-gray-800">
+                        <h4 class="text-xl font-bold text-white">Proven Expertise</h4>
+                        <p class="mt-2 text-gray-400">Founded in 2018 by experts with over a decade of experience in the cybersecurity trenches.</p>
+                    </div>
+                     <div class="bg-brand-gray p-8 rounded-lg border border-gray-800">
+                        <h4 class="text-xl font-bold text-white">Industry Leaders' Choice</h4>
+                        <p class="mt-2 text-gray-400">We have secured some of the biggest names in the industry, protecting their most critical digital assets.</p>
+                    </div>
+                     <div class="bg-brand-gray p-8 rounded-lg border border-gray-800">
+                        <h4 class="text-xl font-bold text-white">Continuous Research</h4>
+                        <p class="mt-2 text-gray-400">Our team is at the forefront of continuous Web3 security research, anticipating threats before they emerge.</p>
+                    </div>
+                </div>
+                
+                <!-- Stats -->
+                <div class="mt-20">
+                     <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                        <div class="bg-gradient-to-br from-brand-gray to-brand-dark p-10 rounded-xl border border-gray-800">
+                            <span class="text-5xl md:text-6xl font-black text-brand-green glow-text shadow-brand-green/50">500+</span>
+                            <p class="mt-3 text-xl font-semibold text-white">Projects Secured</p>
+                        </div>
+                         <div class="bg-gradient-to-br from-brand-gray to-brand-dark p-10 rounded-xl border border-gray-800">
+                            <span class="text-5xl md:text-6xl font-black text-brand-blue glow-text shadow-brand-blue/50">$10B+</span>
+                            <p class="mt-3 text-xl font-semibold text-white">Assets Protected</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-20 bg-brand-gray">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-center text-xl font-semibold text-gray-400 uppercase tracking-widest">Our Team's Certifications</h3>
+                <div class="mt-8 flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+                    <span class="text-2xl font-bold text-gray-300">CISSP</span>
+                    <span class="text-2xl font-bold text-gray-300">RHCA</span>
+                    <span class="text-2xl font-bold text-gray-300">OSCP</span>
+                    <span class="text-2xl font-bold text-gray-300">DPO</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <footer id="contact" class="py-20 md:py-32 bg-brand-dark">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-3 gap-12">
+                    <!-- Contact Info -->
+                    <div class="lg:col-span-1">
+                         <a href="#" class="flex items-center space-x-2">
+                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-brand-green"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span class="text-2xl font-bold text-white">CyberFort</span>
+                        </a>
+                        <p class="mt-4 text-gray-400">Securing the future of digital enterprise.</p>
+                        <div class="mt-6 space-y-3">
+                            <p class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                info@cyberfort.com
+                            </p>
+                             <p class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                +84 906 825 503
+                            </p>
+                             <p class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                Ho Chi Minh, Vietnam
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Newsletter -->
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-semibold text-white">Stay Ahead of the Threats</h3>
+                        <p class="text-gray-400 mt-2">Subscribe to our newsletter for the latest in cybersecurity insights and threat intelligence.</p>
+                        <form class="mt-6 flex flex-col sm:flex-row gap-3">
+                            <input type="email" placeholder="Enter your email" class="w-full flex-grow px-4 py-3 bg-brand-gray border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue text-white" required>
+                            <button type="submit" class="w-full sm:w-auto px-6 py-3 bg-brand-blue text-white font-semibold rounded-md shadow-lg shadow-brand-blue/30 hover:bg-brand-blue/90 btn-glow transition-all duration-300">Send</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom -->
+                <div class="mt-16 pt-8 border-t border-gray-800 text-center text-gray-500">
+                    <p>&copy; 2025 CyberFort. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
     </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-gray-800/50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                     <a href="#" class="flex items-center space-x-2 text-xl font-bold text-white">
-                        <svg class="w-7 h-7 text-sky-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" />
-                        </svg>
-                        <span>Cyberfort</span>
-                    </a>
-                    <p class="mt-4 text-gray-400 text-sm">Securing the Decentralized World. Since 2018.</p>
-                </div>
-                <div class="grid grid-cols-2 md:col-span-2 gap-8">
-                    <div>
-                        <h4 class="font-semibold text-white">Navigate</h4>
-                        <ul class="mt-4 space-y-2">
-                            <li><a href="#services" class="text-gray-400 hover:text-sky-400">Services</a></li>
-                            <li><a href="#products" class="text-gray-400 hover:text-sky-400">Products</a></li>
-                            <li><a href="#about" class="text-gray-400 hover:text-sky-400">Why Us</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-white">Connect</h4>
-                         <ul class="mt-4 space-y-2">
-                            <li><a href="#" class="text-gray-400 hover:text-sky-400">Twitter / X</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-sky-400">LinkedIn</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-sky-400">Medium</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-12 pt-8 border-t border-gray-800/50 text-center text-sm text-gray-500">
-                <p>&copy; 2025 Cyberfort. All Rights Reserved. This is a fictional company for demonstration purposes.</p>
-            </div>
-        </div>
-    </footer>
 
     <script>
         // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        
-        // Close mobile menu when a link is clicked
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
     </script>
+
 </body>
 </html>
